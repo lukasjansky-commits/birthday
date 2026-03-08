@@ -49,7 +49,6 @@ body{
 <div class="terminal" id="terminal"></div>
 
 <script>
-
 const lines = [
 
 "$ ./Lubovi_narozeniny_debug.sh",
@@ -87,7 +86,9 @@ const lines = [
 "Loading human version...",
 "Version 25.0 sucessfully loaded",
 "",
-'$ echo "Vsechno nejlepsi :)"'
+'$ echo "Vsechno nejlepsi :)"',
+"",
+'System status: legendary"'
 ];
 
 const speed = 38;
@@ -106,16 +107,19 @@ function type(){
         terminal.innerHTML += lines[line][char];
         char++;
 
+        window.scrollTo(0, document.body.scrollHeight);
+
         setTimeout(type,speed);
 
     } else {
 
         terminal.innerHTML += "\n";
 
+        window.scrollTo(0, document.body.scrollHeight);
+
         line++;
         char = 0;
 
-        scrollToBottom();
         setTimeout(type,300);
 
     }
@@ -125,7 +129,3 @@ function type(){
 type();
 
 </script>
-
-</body>
-
-</html>
