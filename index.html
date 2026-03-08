@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Debug Terminal</title>
+
+<style>
+
+body{
+    margin:0;
+    background:black;
+    color:#fefefe;
+    font-family:Menlo,Monaco,monospace;
+}
+
+.terminal{
+    padding:20px;
+    font-size:16px;
+    line-height:1.5;
+    white-space:pre-wrap;
+}
+
+@media (min-width:700px){
+    .terminal{
+        max-width:800px;
+        margin:auto;
+        font-size:18px;
+    }
+}
+
+.cursor{
+    display:inline-block;
+    width:10px;
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="terminal" id="terminal"></div>
+
+<script>
+
+const lines = [
+
+"$ ./Lubovi_narozeniny_debug.sh",
+"",
+"[OK] Starting celebration sequence...",
+"[OK] Loading collector item: Gandalf Debugging Duck",
+"",
+"$ git log",
+"",
+"commit 25-years",
+"Author: Lucka & Lubos",
+"Date: Mar 2001",
+"",
+"feat: initial relase of new human",
+"",
+"-high potential",
+"-advanced computer skills",
+"-high sarcasm level",
+"-sports package not found",
+"",
+"$ summon Gandalf",
+"",
+"Gandalf_the_White joined the debugging session",
+"",
+"...",
+"...",
+"...",
+"",
+"BUG SHALL NOT PASS!",
+"",
+"[SUCCESS] All bugs defeated",
+"",
+"[SUCCESS] Birthday deployed",
+"",
+"Loading human version...",
+"Version 25.0 sucessfully loaded",
+"",
+'$ echo "Vsechno nejlepsi :)"'
+];
+
+const speed = 38;
+
+const terminal = document.getElementById("terminal");
+
+let line = 0;
+let char = 0;
+
+function type(){
+
+    if(line >= lines.length) return;
+
+    if(char < lines[line].length){
+
+        terminal.innerHTML += lines[line][char];
+        char++;
+
+        setTimeout(type,speed);
+
+    } else {
+
+        terminal.innerHTML += "\n";
+
+        line++;
+        char = 0;
+
+        setTimeout(type,300);
+
+    }
+
+}
+
+type();
+
+</script>
+
+</body>
+</html>
